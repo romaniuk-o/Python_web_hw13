@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+
+          <li>Accounting of personal finances</li>
+
+
+      </nav>
+      <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="{% url 'income' %}" role="button">Add Income</a></li>
+          <li><a href="{% url 'add_income_type' %}" role="button">Add Income Type</a></li>
+
+        </ul>
+
+        <ul>
+          <li><a href="{% url 'expenses' %}" role="button">Add Expenses</a></li>
+          <li><a href="{% url 'add_expenses_type' %}" role="button">Add Expenses Type</a></li>
+        </ul>
+      </nav>
+      <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="{% url 'result_income' %}" role="button">Total Income</a></li>
+          <li> {{total_income}} USD</li>
+        </ul>
+        <ul>
+
+           <li> Your balans is:  {{total_expenses}} USD</li>
+        </ul>
+        <ul>
+          <li> {{total_expenses}} USD</li>
+          <li><a href="{% url 'res_expenses' %}" role="button">Total expenses</a></li>
+
+        </ul>
+
+      </nav>
+
+    </main>
+  </body>
+</html>

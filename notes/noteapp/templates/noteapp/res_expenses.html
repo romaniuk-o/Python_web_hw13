@@ -1,0 +1,78 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+
+      {% if error %}
+      <div>
+        <mark>{{ error }}</mark>
+      </div>
+      {% endif %}
+      <form method="POST" action="{% url 'res_expenses' %}">
+        <article>
+          Filter
+        <nav>
+        <li>
+          <label
+            >Select tags:
+            <select name="list_type_expenses"   required>
+                <option value="{{None}}">{{Select }}</option>
+                {% for exp in list_type_expenses %}
+                <option value="{{exp.type_ex}}">{{exp.type_ex}}</option>
+                {% endfor %}
+            </select>
+          </label>
+        </li>
+        <li>
+          <label
+            >Enter START date in format yyyy.mm.dd
+                <input type="text" name="start_date" />
+          </label>
+        </li>
+        <li>
+          <label
+            >Enter END date in format yyyy.mm.dd
+                <input type="text" name="end_date" />
+          </label>
+        </li>
+        </nav>
+        <ul>
+        </article>
+         <div class="grid">
+            <button type="submit">Apply filter</button>
+        </div>
+        {% csrf_token %}
+        <article>
+        <table>
+          <h3>Витрати</h3>
+        <thead>
+          <tr>
+            <th scope="col">Витрата</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Тип</th>
+            <th scope="col">Коментар</th>
+          </tr>
+        </thead>
+          {% for exp in expenses_data%}
+            <tbody>
+              <tr>
+                <td>{{exp.money}}</td>
+                <td>{{exp.created.date}}</td>
+                <td>{{exp.type_list }}</td>
+                <td>{{exp.comment}}</td>
+              </tr>
+            </tbody>
+          {% endfor %}
+        <tfoot>
+          <tr>
+            <td scope="col">Total: {{total}}</td>
+            <td scope="col"> </td>
+            <td scope="col"> </td>
+            <td scope="col"> </td>
+          </tr>
+        </tfoot>
+        </table>
+      </article>
+
+    </form>
+
+{% endblock %}
