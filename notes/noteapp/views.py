@@ -160,6 +160,7 @@ def result_income(request):
         total_filter = 0
         inc_type = request.POST.get('list_type_income')
         choice_inc_type = IncomeType.objects.filter(type_in=inc_type)
+        print(choice_inc_type)
         if not choice_inc_type:
             income_filter = income_data
         else:
